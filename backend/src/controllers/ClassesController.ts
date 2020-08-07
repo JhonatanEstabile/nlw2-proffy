@@ -26,7 +26,7 @@ class ClassesController
     }
 
     const timeMinutes = convertHourToMinutes(time);
-    
+
     const classes = await db('classes')
       .whereExists(function() {
         this.select('class_schedule.*')
@@ -89,7 +89,7 @@ class ClassesController
       await trx.commit();
 
       return response.status(201).send();
-    } catch (err) {
+    } catch (err) {'--'
       await trx.rollback();
 
       return response.status(400).json({
